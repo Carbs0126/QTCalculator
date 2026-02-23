@@ -1,4 +1,5 @@
 #include "../headers/calculator_panel.h"
+#include "../headers/round_button.h"
 
 #include <QDebug>
 
@@ -23,7 +24,8 @@ void CalculatorPanel::createButtons()
 
     // 创建按钮并连接信号
     for (const QString &text : buttonTexts) {
-        QPushButton *btn = new QPushButton(text, this);
+        // QPushButton *btn = new QPushButton(text, this);
+        RoundButton *btn = new RoundButton(text, this);
         btn->setMinimumSize(60, 60);
         connect(btn, &QPushButton::clicked, this, &CalculatorPanel::onButtonClicked);
         buttons.append(btn);
