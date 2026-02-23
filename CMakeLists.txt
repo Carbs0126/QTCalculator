@@ -14,9 +14,11 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(QTCalculator
-  main.cpp
-  calculator_panel.h calculator_panel.cpp
-  main_window.h main_window.cpp
+  src/main.cpp
+  src/headers/main_window.h
+  src/headers/calculator_panel.h
+  src/sources/calculator_panel.cpp
+  src/sources/main_window.cpp
 )
 target_link_libraries(QTCalculator PRIVATE
   Qt${QT_VERSION_MAJOR}::Core

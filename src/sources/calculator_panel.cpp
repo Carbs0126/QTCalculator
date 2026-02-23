@@ -1,4 +1,4 @@
-#include "calculator_panel.h"
+#include "../headers/calculator_panel.h"
 
 #include <QDebug>
 

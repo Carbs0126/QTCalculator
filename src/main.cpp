@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 }
 */
 
-#include "calculator_panel.h"
+// #include "headers/calculator_panel.h"
 #include <QVBoxLayout>
 #include <QLabel>
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 */
 
 
-#include "main_window.h"
+#include "headers/main_window.h"
 
 int main(int argc, char *argv[])
 {

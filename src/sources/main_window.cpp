@@ -1,5 +1,5 @@
-#include "main_window.h"
-#include "calculator_panel.h"
+#include "../headers/main_window.h"
+#include "../headers/calculator_panel.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
