@@ -20,4 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
     mainLayout->addWidget(label);
     mainLayout->addWidget(calcPanel);
     setCentralWidget(centralWidget);
+
+    setStyleSheet(QString("* {"
+                          "   background-color: #F7F7F7;"
+                          "}"));
 }

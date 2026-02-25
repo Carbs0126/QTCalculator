@@ -5,6 +5,7 @@
 1. 具备解析功能；
 2. 具备可续计算功能；
 3. UI美观；
+4. 准备使用这个库 作为 解析库 https://github.com/codeplea/tinyexpr
 
 
 ## 备注

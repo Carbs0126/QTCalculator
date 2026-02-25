@@ -23,6 +23,14 @@ public:
     // 设置进度并更新样式
     void setPressProgress(qreal progress);
 
+    void setNormalBgColor(int color);
+
+    void setPressedBgColor(int color);
+
+    void setTextColor(int color);
+
+    void resetStyle();
+
 protected:
     void enterEvent(QEnterEvent *event) override;
     void leaveEvent(QEvent *event) override;
@@ -34,6 +42,22 @@ private slots:
 private:
     qreal mPressProgress;  // 当前动画进度(0.0 -> 1.0)
     QPropertyAnimation *mQPropertyAnimation;
+
+    int mNormalBgColor;
+    int mNormalBgColorR;
+    int mNormalBgColorG;
+    int mNormalBgColorB;
+
+    int mPressedBgColor;
+    int mPressedBgColorR;
+    int mPressedBgColorG;
+    int mPressedBgColorB;
+
+    QString mTextColorStr;
+    int mTextColorR;
+    int mTextColorG;
+    int mTextColorB;
+
 };
 
 

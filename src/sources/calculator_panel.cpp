@@ -15,8 +15,8 @@ void CalculatorPanel::createButtons()
 {
     // 定义按钮文本（按计算器布局）
     QStringList buttonTexts = {
-        "C", "±", "%", "/",
-        "7", "8", "9", "*",
+        "C", "b", "%", "÷",
+        "7", "8", "9", "×",
         "4", "5", "6", "-",
         "1", "2", "3", "+",
         "0", ".", "="
@@ -24,9 +24,26 @@ void CalculatorPanel::createButtons()
 
     // 创建按钮并连接信号
     for (const QString &text : buttonTexts) {
-        // QPushButton *btn = new QPushButton(text, this);
         RoundButton *btn = new RoundButton(text, this);
         btn->setMinimumSize(60, 60);
+        if (text == "=") {
+            btn->setTextColor(0xFFFFFF);
+            btn->setNormalBgColor(0xF08B3A);
+            btn->setPressedBgColor(0xE08235);
+        }else if (text == "b") {
+            btn->setText("");
+            QIcon deleteIcon(":/res/images/icon_delete.png");
+            btn->setIcon(deleteIcon);
+            btn->setIconSize(QSize(32, 32));
+            btn->setNormalBgColor(0xFFFFFF);
+            btn->setPressedBgColor(0xE0E0E0);
+        } else {
+            btn->setTextColor(0x000000);
+            btn->setNormalBgColor(0xFFFFFF);
+            btn->setPressedBgColor(0xE0E0E0);
+        }
+        btn->resetStyle();
+
         connect(btn, &QPushButton::clicked, this, &CalculatorPanel::onButtonClicked);
         buttons.append(btn);
     }

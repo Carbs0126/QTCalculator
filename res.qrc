@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>images/icon_delete.png</file>
+    </qresource>
+</RCC>

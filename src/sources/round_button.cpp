@@ -8,7 +8,7 @@ RoundButton::RoundButton(const QString &text, QWidget *parent):QPushButton(text,
 
     mQPropertyAnimation = new QPropertyAnimation(this, "pressProgress", this);
 
-    mQPropertyAnimation->setDuration(1000);
+    mQPropertyAnimation->setDuration(200);
 
     // 以下两行可以
     // connect(this, &QPushButton::pressed, this, &RoundButton::onPress);
@@ -17,43 +17,28 @@ RoundButton::RoundButton(const QString &text, QWidget *parent):QPushButton(text,
     connect(this, &RoundButton::pressed, this, &RoundButton::onPress);
     connect(this, &RoundButton::released, this, &RoundButton::onRelease);
 
-    // 设置初始样式
-    setStyleSheet("QPushButton {"
-                  "   border-radius: 10px;"           // 圆角半径
-                  "   border: none;"
-                  "   color: white;"
-                  "   background-color: #4A90E2;"
-                  "   font-size: 14px;"
-                  "   font-weight: bold;"
-                  "}"
-                  // 注意：这里不需要设置 background-color，由 setPressProgress 动态生成
-                  );
 }
 
 void RoundButton::setPressProgress(qreal progress)
 {
     mPressProgress = progress;
 
-    // 计算颜色插值
-    // 起始色 (未按下): 蓝色 #4A90E2
-    // 结束色 (按下): 深蓝色 #2C5AA0
-
-    int r = 74 + static_cast<int>((44 - 74) * progress);
-    int g = 144 + static_cast<int>((90 - 144) * progress);
-    int b = 226 + static_cast<int>((160 - 226) * progress);
+    int r = mNormalBgColorR + static_cast<int>((mPressedBgColorR - mNormalBgColorR) * progress);
+    int g = mNormalBgColorG + static_cast<int>((mPressedBgColorG - mNormalBgColorG) * progress);
+    int b = mNormalBgColorB + static_cast<int>((mPressedBgColorB - mNormalBgColorB) * progress);
 
     QString bgColor = QString("rgb(%1, %2, %3)").arg(r).arg(g).arg(b);
 
 
     // 更新样式表背景色
-    setStyleSheet(QString("QPushButton {"
+    setStyleSheet(QString("* {"
                           "   border-radius: 10px;"
                           "   border: none;"
                           "   background-color: %1;"
-                          "   color: white;"
-                          "   font-size: 14px;"
-                          "   font-weight: bold;"
-                          "}").arg(bgColor));
+                          "   color: %2;"
+                          "   font-size: 24px;"
+                          "   font-weight: 500;"
+                          "}").arg(bgColor).arg(this->mTextColorStr));
 }
 
 void RoundButton::onPress()
@@ -93,5 +78,36 @@ void RoundButton::leaveEvent(QEvent *event)
 
     // std::cout << "leave event" << std::endl;
     qDebug() << "鼠标离开按钮区域";
+}
+
+void RoundButton::setNormalBgColor(int color)
+{
+    this->mNormalBgColor = color;
+    this->mNormalBgColorR = (color >> 16) & 0xFF;
+    this->mNormalBgColorG = (color >> 8) & 0xFF;
+    this->mNormalBgColorB = (color >> 0) & 0xFF;
+}
+
+void RoundButton::setPressedBgColor(int color)
+{
+    this->mPressedBgColor = color;
+    this->mPressedBgColorR = (color >> 16) & 0xFF;
+    this->mPressedBgColorG = (color >> 8) & 0xFF;
+    this->mPressedBgColorB = (color >> 0) & 0xFF;
+}
+
+void RoundButton::setTextColor(int color)
+{
+    this->mTextColorR = (color >> 16) & 0xFF;
+    this->mTextColorG = (color >> 8) & 0xFF;
+    this->mTextColorB = (color >> 0) & 0xFF;
+    this->mTextColorStr = QString("rgb(%1, %2, %3)")
+                              .arg(this->mTextColorR)
+                              .arg(this->mTextColorG)
+                              .arg(this->mTextColorB);
+}
+
+void RoundButton::resetStyle() {
+    this->setPressProgress(0);
 }
 
