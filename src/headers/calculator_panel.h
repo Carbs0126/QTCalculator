@@ -21,10 +21,13 @@ private slots:
     void onButtonClicked();
 
 private:
-    QGridLayout *layout;
+    // QGridLayout *layout;
+    QVBoxLayout* layout;
     // 泛型类型为指针；QVector 使用的是对象，而不是指针
     QVector<QPushButton*> buttons;
-    void createButtons();
+    // void createButtons();
+
+    void addButtons();
 };
 
 #endif // CALCULATOR_PANEL_H
