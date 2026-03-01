@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-project(QTCalculator LANGUAGES CXX)
+project(QTCalculator LANGUAGES C CXX)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -26,12 +26,17 @@ add_executable(QTCalculator
   src/headers/screen_panel.h
   src/sources/screen_panel.cpp
   src/sources/button_info.cpp
+  src/headers/tinyexpr.h
+  src/sources/tinyexpr.c
 )
 target_link_libraries(QTCalculator PRIVATE
   Qt${QT_VERSION_MAJOR}::Core
   Qt${QT_VERSION_MAJOR}::Widgets
 )
 target_link_libraries(QTCalculator PRIVATE Qt${QT_VERSION_MAJOR}::Core)
+
+# 可选：明确 tinyexpr.c 按 C 编译（避免 CMake 误判）
+set_source_files_properties(src/sources/tinyexpr.c PROPERTIES LANGUAGE C)
 
 include(GNUInstallDirs)
 install(TARGETS QTCalculator

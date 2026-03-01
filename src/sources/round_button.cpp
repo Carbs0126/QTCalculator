@@ -65,7 +65,7 @@ void RoundButton::enterEvent(QEnterEvent *event)
 {
     // 鼠标进入时调用你的方法
     QPushButton::enterEvent(event); // 调用父类
-    qDebug() << "鼠标进入按钮区域";
+    // qDebug() << "鼠标进入按钮区域";
 }
 
 void RoundButton::leaveEvent(QEvent *event)
@@ -73,7 +73,7 @@ void RoundButton::leaveEvent(QEvent *event)
     // 鼠标离开时调用你的方法
     QPushButton::leaveEvent(event);
 
-    qDebug() << "鼠标离开按钮区域";
+    // qDebug() << "鼠标离开按钮区域";
 }
 
 void RoundButton::setNormalBgColor(int color)
