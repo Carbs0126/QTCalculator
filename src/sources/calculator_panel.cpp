@@ -35,25 +35,25 @@ void CalculatorPanel::addButtons()
     int osNormalBgColor = 0xF08B3A;
     int osPressedBgColor = 0xE08235;
 
-    buttonInfoList.emplaceBack("C", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("", wsTextColor, wsNormalBgColor, wsPressedBgColor, ":/res/images/icon_delete.png");
-    buttonInfoList.emplaceBack("%", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("÷", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("7", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("8", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("9", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("×", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("4", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("5", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("6", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("-", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("1", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("2", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("3", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("+", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("0", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack(".", wsTextColor, wsNormalBgColor, wsPressedBgColor);
-    buttonInfoList.emplaceBack("=", osTextColor, osNormalBgColor, osPressedBgColor);
+    buttonInfoList.emplaceBack("C", ButtonInfo::INFO_CMD_CLEAR, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("",  ButtonInfo::INFO_CMD_DELETE, wsTextColor, wsNormalBgColor, wsPressedBgColor, ":/res/images/icon_delete.png");
+    buttonInfoList.emplaceBack("%", ButtonInfo::INFO_OPERATOR_PERCENT, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("÷", ButtonInfo::INFO_OPERATOR_DIVIDE, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("7", ButtonInfo::INFO_DIGIT_7, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("8", ButtonInfo::INFO_DIGIT_8, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("9", ButtonInfo::INFO_DIGIT_9, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("×", ButtonInfo::INFO_OPERATOR_MULTIPLE, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("4", ButtonInfo::INFO_DIGIT_4, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("5", ButtonInfo::INFO_DIGIT_5, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("6", ButtonInfo::INFO_DIGIT_6, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("-", ButtonInfo::INFO_OPERATOR_MINUS, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("1", ButtonInfo::INFO_DIGIT_1, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("2", ButtonInfo::INFO_DIGIT_2, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("3", ButtonInfo::INFO_DIGIT_3, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("+", ButtonInfo::INFO_OPERATOR_ADD, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("0", ButtonInfo::INFO_DIGIT_0, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack(".", ButtonInfo::INFO_DIGIT_POINT, wsTextColor, wsNormalBgColor, wsPressedBgColor);
+    buttonInfoList.emplaceBack("=", ButtonInfo::INFO_OPERATOR_EQUAL, osTextColor, osNormalBgColor, osPressedBgColor);
 
     for (const ButtonInfo &info : buttonInfoList)
     {
@@ -69,8 +69,9 @@ void CalculatorPanel::addButtons()
             btn->setIconSize(QSize(32, 32));
         }
         btn->resetStyle();
+        btn->setInfo(info.mInfo);
 
-        connect(btn, &QPushButton::clicked, this, &CalculatorPanel::onButtonClicked);
+        connect(btn, &RoundButton::clicked, this, &CalculatorPanel::onButtonClicked);
 
         buttons.append(btn);
     }

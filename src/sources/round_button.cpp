@@ -107,3 +107,8 @@ void RoundButton::resetStyle()
 {
     this->setPressProgress(0);
 }
+
+void RoundButton::setInfo(const QString &info)
+{
+    this->mInfo = info;
+}

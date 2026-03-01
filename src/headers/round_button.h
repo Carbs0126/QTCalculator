@@ -31,6 +31,8 @@ public:
 
     void resetStyle();
 
+    void setInfo(const QString &text);
+
 protected:
     void enterEvent(QEnterEvent *event) override;
     void leaveEvent(QEvent *event) override;
@@ -59,6 +61,7 @@ private:
     int mTextColorB;
 
     QString mTextColorStr;
+    QString mInfo;
 };
 
 #endif // ROUND_BUTTON_H

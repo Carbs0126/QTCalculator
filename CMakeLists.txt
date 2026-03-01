@@ -23,6 +23,9 @@ add_executable(QTCalculator
   src/sources/round_button.cpp
   res.qrc
   src/headers/button_info.h
+  src/headers/screen_panel.h
+  src/sources/screen_panel.cpp
+  src/sources/button_info.cpp
 )
 target_link_libraries(QTCalculator PRIVATE
   Qt${QT_VERSION_MAJOR}::Core
