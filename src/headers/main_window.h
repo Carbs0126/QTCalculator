@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include <QLabel>
-#include "screen_panel.h"
-#include "calculator_panel.h"
+#include "./widget/screen_panel.h"
+#include "./widget/calculator_panel.h"
 
 class MainWindow : public QMainWindow
 {

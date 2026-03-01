@@ -16,20 +16,20 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 add_executable(QTCalculator
   src/main.cpp
   src/headers/main_window.h
-  src/headers/calculator_panel.h
-  src/sources/calculator_panel.cpp
+  src/headers/widget/calculator_panel.h
+  src/sources/widget/calculator_panel.cpp
   src/sources/main_window.cpp
-  src/headers/round_button.h
-  src/sources/round_button.cpp
+  src/headers/widget/round_button.h
+  src/sources/widget/round_button.cpp
   res.qrc
-  src/headers/button_info.h
-  src/headers/screen_panel.h
-  src/sources/screen_panel.cpp
-  src/sources/button_info.cpp
-  src/headers/tinyexpr.h
-  src/sources/tinyexpr.c
-  src/headers/expression_info.h
-  src/sources/expression_info.cpp
+  src/headers/info/button_info.h
+  src/headers/widget/screen_panel.h
+  src/sources/widget/screen_panel.cpp
+  src/sources/info/button_info.cpp
+  src/headers/core/tinyexpr.h
+  src/sources/core/tinyexpr.c
+  src/headers/info/expression_info.h
+  src/sources/info/expression_info.cpp
 )
 target_link_libraries(QTCalculator PRIVATE
   Qt${QT_VERSION_MAJOR}::Core

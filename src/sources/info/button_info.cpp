@@ -1,4 +1,4 @@
-#include "../headers/button_info.h"
+#include "../../headers/info/button_info.h"
 
 const QString ButtonInfo::INFO_DIGIT_0 = "0";
 const QString ButtonInfo::INFO_DIGIT_1 = "1";

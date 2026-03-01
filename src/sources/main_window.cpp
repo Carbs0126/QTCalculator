@@ -1,7 +1,7 @@
 #include "../headers/main_window.h"
-#include "../headers/calculator_panel.h"
-#include "../headers/button_info.h"
-#include "../headers/tinyexpr.h"
+#include "../headers/widget/calculator_panel.h"
+#include "../headers/info/button_info.h"
+#include "../headers/core/tinyexpr.h"
 
 #include <QVBoxLayout>
 #include <QLabel>

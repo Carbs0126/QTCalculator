@@ -1,6 +1,6 @@
-#include "../headers/calculator_panel.h"
-#include "../headers/round_button.h"
-#include "../headers/button_info.h"
+#include "../../headers/widget/calculator_panel.h"
+#include "../../headers/widget/round_button.h"
+#include "../../headers/info/button_info.h"
 
 #include <QDebug>
 

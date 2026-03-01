@@ -1,5 +1,5 @@
-#include "../headers/screen_panel.h"
-#include "../headers/button_info.h"
+#include "../../headers/widget/screen_panel.h"
+#include "../../headers/info/button_info.h"
 #include <QEasingCurve>
 
 ScreenPanel::ScreenPanel(QWidget *parent) : QWidget(parent),
