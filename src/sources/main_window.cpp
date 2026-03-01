@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     connect(this->mCalculatorPanel, &CalculatorPanel::buttonClicked,
             [=](const QString &text)
             {
+                this->mScreenPanel->inputInfo(text);
+        /*
                 if (text == ButtonInfo::INFO_OPERATOR_EQUAL)
                 {
                     this->calculate();
@@ -28,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
                     this->appendInfo(text);
                 }
                 qDebug() << "你按下了: " + text;
+        */
                 // this->mCurrentExpression =
                 // label->setText("你按下了: " + text);
             });

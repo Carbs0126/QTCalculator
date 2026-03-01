@@ -1,4 +1,5 @@
 #include "../headers/screen_panel.h"
+#include "../headers/button_info.h"
 #include <QEasingCurve>
 
 ScreenPanel::ScreenPanel(QWidget *parent) : QWidget(parent),
@@ -47,11 +48,23 @@ ScreenPanel::ScreenPanel(QWidget *parent) : QWidget(parent),
     // 初始化UI和动画
     // initUI();
 
-
     // 设置显示文本
     // if (!text.isEmpty()) {
         // m_animatedLabel->setText(text);
     // }
+}
+
+void ScreenPanel::inputInfo(const QString &info)
+{
+    if (info == ButtonInfo::INFO_OPERATOR_EQUAL)
+    {
+        // this->calculate();
+    }
+    else
+    {
+        // this->appendInfo(text);
+    }
+    qDebug() << "screen panel --> 你按下了: " + info;
 }
 
 void ScreenPanel::initUI()

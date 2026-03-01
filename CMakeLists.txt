@@ -28,6 +28,8 @@ add_executable(QTCalculator
   src/sources/button_info.cpp
   src/headers/tinyexpr.h
   src/sources/tinyexpr.c
+  src/headers/expression_info.h
+  src/sources/expression_info.cpp
 )
 target_link_libraries(QTCalculator PRIVATE
   Qt${QT_VERSION_MAJOR}::Core

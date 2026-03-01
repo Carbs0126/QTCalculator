@@ -20,10 +20,12 @@ class ScreenPanel : public QWidget
 
 public:
     explicit ScreenPanel(QWidget *parent = nullptr);
+    // todo
+    void inputInfo(const QString &info);
 
+    // todo
     // 对外提供的启动动画接口
     void startAnimation();
-
 
 
 private:
