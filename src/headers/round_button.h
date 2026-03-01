@@ -33,6 +33,8 @@ public:
 
     void setInfo(const QString &text);
 
+    QString getInfo();
+
 protected:
     void enterEvent(QEnterEvent *event) override;
     void leaveEvent(QEvent *event) override;

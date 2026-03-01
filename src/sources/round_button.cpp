@@ -112,3 +112,8 @@ void RoundButton::setInfo(const QString &info)
 {
     this->mInfo = info;
 }
+
+QString RoundButton::getInfo()
+{
+    return this->mInfo;
+}

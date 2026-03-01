@@ -1,5 +1,6 @@
 #include "../headers/main_window.h"
 #include "../headers/calculator_panel.h"
+#include "../headers/button_info.h"
 
 #include <QVBoxLayout>
 #include <QLabel>
@@ -10,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     QWidget *centralWidget = new QWidget(this);
     QVBoxLayout *mainLayout = new QVBoxLayout();
 
-    QLabel *label = new QLabel("点击下方按键：", this);
+    this->label = new QLabel("点击下方按键：", this);
     CalculatorPanel *calcPanel = new CalculatorPanel(this);
 
     // calcPanel->setMinimumSize(300, 400);
@@ -18,7 +19,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(calcPanel, &CalculatorPanel::buttonClicked,
             [=](const QString &text)
             {
-                label->setText("你按下了: " + text);
+                if (text == ButtonInfo::INFO_OPERATOR_EQUAL)
+                {
+                    this->calculate();
+                }
+                else
+                {
+                    this->appendInfo(text);
+                }
+                qDebug() << "你按下了: " + text;
+                // this->mCurrentExpression =
+                // label->setText("你按下了: " + text);
             });
 
     mainLayout->addWidget(label);
@@ -34,4 +45,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     setFixedSize(sizeHint());
     // resize(sizeHint());
+}
+
+void MainWindow::appendInfo(const QString &text)
+{
+    this->mCurrentExpression.append(text);
+}
+
+void MainWindow::calculate()
+{
+    this->label->setText("计算表达式 :" + this->mCurrentExpression);
+    this->mCurrentExpression = "";
 }

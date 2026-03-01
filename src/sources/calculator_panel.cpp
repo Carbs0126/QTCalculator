@@ -139,9 +139,9 @@ void CalculatorPanel::addButtons()
 
 void CalculatorPanel::onButtonClicked()
 {
-    QPushButton *btn = qobject_cast<QPushButton *>(sender());
+    RoundButton *btn = qobject_cast<RoundButton *>(sender());
     if (btn)
     {
-        emit buttonClicked(btn->text());
+        emit buttonClicked(btn->getInfo());
     }
 }
