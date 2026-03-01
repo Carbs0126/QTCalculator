@@ -38,18 +38,16 @@ int main(int argc, char *argv[])
 }
 */
 
-
 #include "headers/main_window.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
     // QWidget window;
-    MainWindow window;             // 创建主窗口实例
+    MainWindow window; // 创建主窗口实例
     window.resize(400, 300);
     window.setWindowTitle("My App");
     window.show();
 
     return app.exec();
 }
-

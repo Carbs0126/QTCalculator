@@ -15,10 +15,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     // calcPanel->setMinimumSize(300, 400);
 
-
-    connect(calcPanel, &CalculatorPanel::buttonClicked, [=](const QString &text) {
-        label->setText("你按下了: " + text);
-    });
+    connect(calcPanel, &CalculatorPanel::buttonClicked,
+            [=](const QString &text)
+            {
+                label->setText("你按下了: " + text);
+            });
 
     mainLayout->addWidget(label);
     mainLayout->addWidget(calcPanel);

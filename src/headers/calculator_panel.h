@@ -21,11 +21,9 @@ private slots:
     void onButtonClicked();
 
 private:
-    // QGridLayout *layout;
-    QVBoxLayout* layout;
+    QVBoxLayout *layout;
     // 泛型类型为指针；QVector 使用的是对象，而不是指针
-    QVector<QPushButton*> buttons;
-    // void createButtons();
+    QVector<QPushButton *> buttons;
 
     void addButtons();
 };

@@ -3,7 +3,6 @@
 
 #include <QPushButton>
 #include <QPropertyAnimation>
-// #include <iostream>
 #include <QDebug>
 
 class RoundButton : public QPushButton
@@ -16,7 +15,8 @@ public:
     explicit RoundButton(const QString &text, QWidget *parent = nullptr);
 
     // 获取当前进度
-    qreal getPressProgress() const {
+    qreal getPressProgress() const
+    {
         return mPressProgress;
     }
 
@@ -40,7 +40,8 @@ private slots:
     void onRelease();
 
 private:
-    qreal mPressProgress;  // 当前动画进度(0.0 -> 1.0)
+    // 当前动画进度(0.0 -> 1.0)
+    qreal mPressProgress;
     QPropertyAnimation *mQPropertyAnimation;
 
     int mNormalBgColor;
@@ -53,12 +54,11 @@ private:
     int mPressedBgColorG;
     int mPressedBgColorB;
 
-    QString mTextColorStr;
     int mTextColorR;
     int mTextColorG;
     int mTextColorB;
 
+    QString mTextColorStr;
 };
-
 
 #endif // ROUND_BUTTON_H

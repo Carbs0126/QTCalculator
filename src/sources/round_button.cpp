@@ -1,6 +1,6 @@
 #include "../headers/round_button.h"
 
-RoundButton::RoundButton(const QString &text, QWidget *parent):QPushButton(text, parent), mPressProgress(0.0)
+RoundButton::RoundButton(const QString &text, QWidget *parent) : QPushButton(text, parent), mPressProgress(0.0)
 {
     setCursor(Qt::PointingHandCursor);
 
@@ -16,7 +16,6 @@ RoundButton::RoundButton(const QString &text, QWidget *parent):QPushButton(text,
 
     connect(this, &RoundButton::pressed, this, &RoundButton::onPress);
     connect(this, &RoundButton::released, this, &RoundButton::onRelease);
-
 }
 
 void RoundButton::setPressProgress(qreal progress)
@@ -29,7 +28,6 @@ void RoundButton::setPressProgress(qreal progress)
 
     QString bgColor = QString("rgb(%1, %2, %3)").arg(r).arg(g).arg(b);
 
-
     // 更新样式表背景色
     setStyleSheet(QString("* {"
                           "   border-radius: 10px;"
@@ -38,7 +36,9 @@ void RoundButton::setPressProgress(qreal progress)
                           "   color: %2;"
                           "   font-size: 24px;"
                           "   font-weight: 500;"
-                          "}").arg(bgColor).arg(this->mTextColorStr));
+                          "}")
+                      .arg(bgColor)
+                      .arg(this->mTextColorStr));
 }
 
 void RoundButton::onPress()
@@ -51,7 +51,9 @@ void RoundButton::onPress()
 
 void RoundButton::onRelease()
 {
-    if (!isDown()) { // 确保按钮确实被释放了（没有被移出按钮区域）
+    if (!isDown())
+    {
+        // 确保按钮确实被释放了（没有被移出按钮区域）
         mQPropertyAnimation->stop();
         mQPropertyAnimation->setStartValue(mPressProgress);
         mQPropertyAnimation->setEndValue(0.0);
@@ -62,21 +64,15 @@ void RoundButton::onRelease()
 void RoundButton::enterEvent(QEnterEvent *event)
 {
     // 鼠标进入时调用你的方法
-    // onHoverEnter();
     QPushButton::enterEvent(event); // 调用父类
-
-    // std::cout << "enter event" << std::endl;
     qDebug() << "鼠标进入按钮区域";
-
 }
 
 void RoundButton::leaveEvent(QEvent *event)
 {
     // 鼠标离开时调用你的方法
-    // onHoverLeave();
     QPushButton::leaveEvent(event);
 
-    // std::cout << "leave event" << std::endl;
     qDebug() << "鼠标离开按钮区域";
 }
 
@@ -107,7 +103,7 @@ void RoundButton::setTextColor(int color)
                               .arg(this->mTextColorB);
 }
 
-void RoundButton::resetStyle() {
+void RoundButton::resetStyle()
+{
     this->setPressProgress(0);
 }
-
