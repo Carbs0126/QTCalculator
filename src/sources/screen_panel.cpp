@@ -1,15 +1,53 @@
 #include "../headers/screen_panel.h"
 #include <QEasingCurve>
 
-ScreenPanel::ScreenPanel(QWidget *parent)
-    : QWidget(parent),
+ScreenPanel::ScreenPanel(QWidget *parent) : QWidget(parent),
     m_animatedLabel(nullptr),
     m_opacityAnim(nullptr),
     m_posAnim(nullptr),
     m_animationGroup(nullptr)
 {
+
+    setAttribute(Qt::WA_StyledBackground, true);
+    setStyleSheet(QString("* {"
+                          "   background-color: #00ff00;"
+                          "}"));
+
+    layoutH = new QHBoxLayout();
+    layoutH->setContentsMargins(0, 0, 0, 0); // 清空布局外边框（上下左右）
+
+
+    mLineEdit = new QLineEdit(this);
+    mLineEdit->setPlaceholderText("请输入普通文本"); // 占位提示文字
+    mLineEdit->setAlignment(Qt::AlignRight);
+
+    // mLineEdit->setFixedHeight(40);
+    // 或设置最小/最大高度
+    mLineEdit->setMinimumHeight(60);
+    // mLineEdit->setMaximumHeight(50);
+
+    // 无边框（本质也是调用样式表）
+    mLineEdit->setFrame(false);
+
+    mLineEdit->setStyleSheet(QString("* {"
+                          "   border-radius: 10px;"
+                          "   border: none;"
+                          "   background-color: #ff0000;"
+                          "   color: #0000ff;"
+                          "   font-size: 24px;"
+                          "   font-weight: 500;"
+                          "}"));
+
+
+
+    layoutH->addWidget(mLineEdit);
+
+    this->setLayout(layoutH);
+
     // 初始化UI和动画
-    initUI();
+    // initUI();
+
+
     // 设置显示文本
     // if (!text.isEmpty()) {
         // m_animatedLabel->setText(text);

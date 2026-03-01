@@ -8,18 +8,15 @@
 #include <QMessageBox>
 #include <cstring>
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
 {
-    QWidget *centralWidget = new QWidget(this);
-    QVBoxLayout *mainLayout = new QVBoxLayout();
+    this->mCentralWidget = new QWidget(this);
+    this->mMainLayout = new QVBoxLayout();
 
-    this->label = new QLabel("点击下方按键：", this);
-    CalculatorPanel *calcPanel = new CalculatorPanel(this);
+    this->mScreenPanel = new ScreenPanel(this);
+    this->mCalculatorPanel = new CalculatorPanel(this);
 
-    // calcPanel->setMinimumSize(300, 400);
-
-    connect(calcPanel, &CalculatorPanel::buttonClicked,
+    connect(this->mCalculatorPanel, &CalculatorPanel::buttonClicked,
             [=](const QString &text)
             {
                 if (text == ButtonInfo::INFO_OPERATOR_EQUAL)
@@ -35,16 +32,16 @@ MainWindow::MainWindow(QWidget *parent)
                 // label->setText("你按下了: " + text);
             });
 
-    mainLayout->addWidget(label);
-    mainLayout->addWidget(calcPanel);
+    this->mMainLayout->addWidget(this->mScreenPanel);
+    this->mMainLayout->addWidget(this->mCalculatorPanel);
 
-    centralWidget->setLayout(mainLayout);
+    this->mCentralWidget->setLayout(this->mMainLayout);
 
-    setCentralWidget(centralWidget);
+    setCentralWidget(this->mCentralWidget);
 
-    centralWidget->setStyleSheet("background-color: #F7F7F7;");
-    label->setStyleSheet("background-color: #6600FF00;");
-    calcPanel->setStyleSheet("background-color: #66FF0000;");
+    this->mCentralWidget->setStyleSheet("background-color: #F7F7F7;");
+    this->mScreenPanel->setStyleSheet("background-color: #6600FF00;");
+    this->mCalculatorPanel->setStyleSheet("background-color: #66FF0000;");
 
     setFixedSize(sizeHint());
     // resize(sizeHint());
@@ -100,11 +97,9 @@ void MainWindow::calculate()
     QString resultQStr = QString::number(result);
 
     // 显示结果
-    this->label->setText("计算表达式 :" + this->mCurrentExpression + " = " + resultQStr);
-    // this->label->setText(QString("计算结果：%1 = %2").arg(this->mCurrentExpression, ));
-    // resultLabel->setText(QString("计算结果：%1").arg(result, 0, 'f', 6));
+    // this->label->setText("计算表达式 :" + this->mCurrentExpression + " = " + resultQStr);
 
-
+    qDebug() << this->mCurrentExpression + " = " + resultQStr;
 
 
 

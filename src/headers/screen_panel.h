@@ -10,6 +10,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QLineEdit>
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>
 
@@ -26,6 +27,14 @@ public:
 
 
 private:
+
+    QHBoxLayout *layoutH;
+
+    QLineEdit *mLineEdit;
+    // QLineEdit *normalEdit = new QLineEdit();
+    // normalEdit->setPlaceholderText("请输入普通文本"); // 占位提示文字
+    // layout->addWidget(normalEdit);
+
     // 内部管理的QLabel
     QLabel *m_animatedLabel;
 
